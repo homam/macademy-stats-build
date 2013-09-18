@@ -3,19 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="7272af63-2b18-4bb2-aa3b-f379309223a7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/d3-template" afterPath="$PROJECT_DIR$/d3-template" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gitmodules" afterPath="$PROJECT_DIR$/../.gitmodules" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/d3-template/chart-modules/bar/chart.coffee" afterPath="$PROJECT_DIR$/d3-template/chart-modules/bar/chart.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/d3-template/chart-modules/bar/chart.js" afterPath="$PROJECT_DIR$/d3-template/chart-modules/bar/chart.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/dashboard/index.ejs" afterPath="$PROJECT_DIR$/reports/dashboard/index.ejs" />
     </list>
     <ignored path="client.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="7272af63-2b18-4bb2-aa3b-f379309223a7" time="1379517123039" ignored="false" />
     <file path="/index.coffee" changelist="7272af63-2b18-4bb2-aa3b-f379309223a7" time="1379530429594" ignored="false" />
-    <file path="/index.ejs" changelist="7272af63-2b18-4bb2-aa3b-f379309223a7" time="1379535882303" ignored="false" />
+    <file path="/index.ejs" changelist="7272af63-2b18-4bb2-aa3b-f379309223a7" time="1379539393536" ignored="false" />
     <file path="/chart.coffee" changelist="7272af63-2b18-4bb2-aa3b-f379309223a7" time="1379530806238" ignored="false" />
     <file path="/index.less" changelist="7272af63-2b18-4bb2-aa3b-f379309223a7" time="1379531038814" ignored="false" />
     <file path="/property.coffee" changelist="7272af63-2b18-4bb2-aa3b-f379309223a7" time="1379527446397" ignored="false" />
     <file path="/d3-tooltip.js" changelist="7272af63-2b18-4bb2-aa3b-f379309223a7" time="1379529614321" ignored="false" />
-    <file path="/build-heroku.sh" changelist="7272af63-2b18-4bb2-aa3b-f379309223a7" time="1379539244891" ignored="false" />
+    <file path="/build-heroku.sh" changelist="7272af63-2b18-4bb2-aa3b-f379309223a7" time="1379539660325" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,28 +73,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.ejs" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/reports/dashboard/index.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="37" selection-start="1260" selection-end="1260" vertical-scroll-proportion="-19.375">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Procfile" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="63" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build-heroku.sh" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build-heroku.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="26" selection-start="90" selection-end="90" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -137,10 +121,10 @@
         <option value="$PROJECT_DIR$/reports/dashboard/index.coffee" />
         <option value="$PROJECT_DIR$/d3-template/chart-modules/bar/chart.coffee" />
         <option value="$PROJECT_DIR$/reports/dashboard/index.less" />
-        <option value="$PROJECT_DIR$/reports/dashboard/index.ejs" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/build-heroku.sh" />
         <option value="$PROJECT_DIR$/Procfile" />
+        <option value="$PROJECT_DIR$/reports/dashboard/index.ejs" />
+        <option value="$PROJECT_DIR$/build-heroku.sh" />
       </list>
     </option>
   </component>
@@ -191,6 +175,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="reports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dashboard" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -462,23 +464,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/d3-template/chart-modules/common/property.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="26" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build-heroku.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="26" selection-start="90" selection-end="90" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -492,7 +480,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/reports/dashboard/index.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="37" selection-start="1260" selection-end="1260" vertical-scroll-proportion="-19.375">
+        <state line="8" column="25" selection-start="230" selection-end="230" vertical-scroll-proportion="0.12725344">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3-template/chart-modules/common/property.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="26" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build-heroku.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="25" selection-start="156" selection-end="156" vertical-scroll-proportion="0.07653061">
           <folding />
         </state>
       </provider>
