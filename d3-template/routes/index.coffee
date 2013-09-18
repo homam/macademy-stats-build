@@ -1,0 +1,2 @@
+exports.register = (app) ->
+  

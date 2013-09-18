@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<!-- using /libs -->
+<head>
+    <title>Stacked Tests</title>
+    <script src="/libs/d3.js"></script>
+    <script src="/libs/require.js"></script>
+    <script src="/libs/underscore.js"></script>
+    <script src="/libs/jquery2.js"></script>
+    <style>
+        text {
+            color:#000000;
+            font: 10px sans-serif;
+        }
+        line{
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+        .bar {
+            fill: rgba(13, 118, 41, 0.33);
+        }
+        path {
+            stroke: #000;
+            stroke-width: 0px;
+        }
+        .tooltip-overlay {
+            opacity: 0;
+        }
+        svg {
+            outline: solid 1px #000000;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="chart"></div>
+    <div id="mouse-val"></div>
+    <script src="test.js"></script>
+</body>
+</html>

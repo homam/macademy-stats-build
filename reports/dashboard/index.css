@@ -1,0 +1,204 @@
+@charset "utf-8";
+/* Global */
+.center {
+  text-align: center;
+}
+.arc text {
+  stroke: white;
+  stroke-width: 0px;
+  fill: white;
+  font-size: 17px;
+}
+body {
+  font-family: Helvetica, Calibri, sans-serif;
+  font-size: 100%;
+  font-weight: normal;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  background: #eee;
+}
+div {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+section {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+h2 {
+  font-weight: 100;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #777;
+}
+input {
+  outline: none;
+}
+div[data-tooltip] {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.y.axis line {
+  stroke: #ccc;
+}
+line.exp {
+  stroke: #000;
+}
+line.leftStnDev,
+line.rightStnDev {
+  stroke: silver;
+}
+#IapEventsPerUser rect {
+  /* source: http://alturl.com/et3nf */
+
+}
+/* Styles */
+.header {
+  position: fixed;
+  width: 100%;
+  height: auto;
+  background: #124191;
+  top: 0;
+  left: 0;
+  -webkit-box-shadow: 0 5px 0 rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 5px 0 rgba(0, 0, 0, 0.25);
+  -ms-box-shadow: 0 5px 0 rgba(0, 0, 0, 0.25);
+  -o-box-shadow: 0 5px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.25);
+  z-index: 3;
+}
+.header #date-controls {
+  position: relative;
+  width: 960px;
+  height: 50px;
+  line-height: 45px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+.header #date-controls .dateSlct {
+  position: relative;
+  display: block;
+}
+.header #date-controls .dateSlct input {
+  border: 0;
+  margin: 0;
+  padding: 0 4px;
+  width: auto;
+  height: 24px;
+}
+.header #date-controls input.windowsPhoneStyleBtns {
+  background: none;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  padding: 0 1px 1px 0;
+  font-size: 12px;
+  color: #fff;
+  width: 25px;
+  height: 25px;
+}
+.header #date-controls input.windowsPhoneStyleBtns.hover {
+  border-color: #071836;
+  background: #ddd;
+  color: #124191;
+}
+.header #date-controls .dateToday {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 135px;
+}
+.header #date-controls .dateToday input.todayDateBtn {
+  width: 75px;
+  height: 28px;
+}
+.header #date-controls .priceStudy {
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  width: 90px;
+}
+.header #date-controls .priceStudy input.windowsPhoneStyleBtns.active {
+  border-color: #124191;
+  background: #fff;
+  color: #124191;
+}
+.wrapper {
+  position: relative;
+  width: 960px;
+  height: auto;
+  margin: 0 auto;
+  padding: 0 10px;
+  background: #fff;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  -ms-box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
+.wrapper section {
+  padding-bottom: 10px;
+}
+.wrapper section#IapEventsPerUser {
+  position: relative;
+  padding-top: 50px;
+}
+.wrapper .fiftyFifty:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.wrapper .fiftyFifty section {
+  float: left;
+  width: 465px;
+  height: auto;
+  margin-left: 30px;
+}
+.wrapper .fiftyFifty section .addBtns {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  z-index: 2;
+}
+.wrapper .fiftyFifty section .addBtns input.hider {
+  display: none;
+}
+.wrapper .fiftyFifty section .addBtns input.hider:checked + label {
+  color: #fff;
+  background: #124191;
+}
+.wrapper .fiftyFifty section .addBtns .addBtnsSlct {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 45px;
+  padding: 0 2px;
+  margin: 0;
+  font-size: 12px;
+  font-weight: normal;
+  text-align: center;
+  cursor: pointer;
+  line-height: 50px;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: #333;
+  background: #c1d8fe;
+}
+.wrapper .fiftyFifty section:first-child {
+  margin: 0;
+}

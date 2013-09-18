@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="/javascript/libs/d3.js"></script>
+    <script src="/javascript/libs/require.js"></script>
+    <script src="/javascript/libs/underscore.js"></script>
+    <script src="/javascript/libs/jquery2.js"></script>
+    <style>
+        text {
+            color:#000000;
+            font: 10px sans-serif;
+        }
+        line{
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+        .bar {
+            fill: rgba(13, 118, 41, 0.33);
+        }
+        path {
+            stroke: #000;
+            fill:none;
+            stroke-width: 3px;
+        }
+        .tooltip-overlay {
+            opacity: 0;
+        }
+        svg {
+            outline: solid 1px #000000;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="chart"></div>
+    <div id="mouse-val"></div>
+    <script src="test.js"></script>
+</body>
+</html>

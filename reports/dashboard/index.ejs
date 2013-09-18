@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<title>Report</title>
+<head>
+    <title></title>
+    <script src="/libs/d3.js"></script>
+    <script src="/libs/require.js"></script>
+    <script src="/libs/underscore.js"></script>
+    <script src="/libs/jQuery2.js"></script>
+    <script src="/reports/dashboard/index.js"></script>
+    <link href="/reports/dashboard/index.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="header">
+        <div id="date-controls">
+
+            <div class="dateSlct">
+                <input type="date" id="fromDate" min="2013-09-12" />
+                <input type="date" id="toDate" min="2013-09-13" />
+            </div>
+
+            <div class="dateToday">
+                <input type="button" id="todayDateMinus" value="-" class="windowsPhoneStyleBtns" />
+                <input type="button" id="todayDate" value="Today" class="todayDateBtn" />
+                <input type="button" id="todayDatePlus" value="+" class="windowsPhoneStyleBtns" />
+            </div>
+
+            <div class="priceStudy">
+                <input type="button" id="appFree" value="$0" class="windowsPhoneStyleBtns" />
+                <input type="button" id="appOne" value="$1" class="windowsPhoneStyleBtns" />
+                <input type="button" id="appTwo" value="$2" class="windowsPhoneStyleBtns" />
+            </div>
+
+        </div>
+    </div>
+
+    <div class="wrapper">
+
+        <div class="center">
+            <section id="IapEventsPerUser">
+                <h2>Funnel</h2>
+                <div class="chart"></div>
+            </section>
+        </div>
+
+        <div class="fiftyFifty">
+
+            <section id="IapRequestsBeforePurchaseHistogram">
+                <h2>IAP Requests before Purchase</h2>
+                <div class="chart"></div>
+            </section>
+
+            <section id="VisitsBeforePurchaseHistogram">
+                <h2>Usage before Purchase</h2>
+                <div class="chart"></div>
+            </section>
+
+        </div>
+
+        <div class="fiftyFifty">
+
+            <section id="ViewOfPurchase">
+                <h2>Purchase made at...</h2>
+                <div class="chart"></div>
+            </section>
+
+            <section id="AppUsersSources">
+                <h2>Registered Users</h2>
+                <div class="chart"></div>
+                <div class="addBtns">
+                    <input type="radio" name="buyers" value="true" id="buyers-true" class="hider" />
+                    <label for="buyers-true" class="addBtnsSlct">Buyers</label>
+                    <input type="radio" name="buyers" value="false" id="buyers-false" class="hider" checked />
+                    <label for="buyers-false" class="addBtnsSlct">Everyone</label>
+                </div>
+            </section>
+
+        </div>
+
+		<div class="center">
+			<section id="UsageAfterPurchase">
+				<h2>Usage after Purchase</h2>
+				<div class="chart"></div>
+			</section>
+		</div>
+
+    </div>
+
+</body>
+</html>
