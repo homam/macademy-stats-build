@@ -4,6 +4,9 @@ define ['../common/property'], (Property) ->
     # configs
     margin =
       right: 50
+      left: 0
+      top: 0
+      bottom: 0
 
     width = 300
     height = 300
@@ -17,7 +20,7 @@ define ['../common/property'], (Property) ->
     #color = d3.scale.category10()
 
     formatNumber = d3.format(',f')
-    formatPercent = d3.format('.1p')
+    formatPercent = d3.format('.2p')
 
     arc = d3.svg.arc()
     .outerRadius(radius).innerRadius(0);
@@ -30,17 +33,17 @@ define ['../common/property'], (Property) ->
 
     properties = {
       width: new Property (value) ->
-        width = value - margin.right
-        radius = Math.min(width,height)/2
+        width = value-margin.right
+        radius = Math.min(width,height-margin.bottom)/2
         arc.outerRadius(radius)
 
       height: new Property (value) ->
-        height = value
-        radius = Math.min(width,height)/2
+        height = value - margin.bottom
+        radius = Math.min(width,height-margin.bottom)/2
         arc.outerRadius(radius)
 
       margin : new Property (value) ->
-        margin = value
+        margin = _.extend margin, value
         properties.width.reset()
         properties.height.reset()
 
@@ -52,10 +55,13 @@ define ['../common/property'], (Property) ->
         valueMap = value
         pie.value(value);
 
+      legendsPositoin: new Property
+
     }
 
     properties.width.set(width)
     properties.height.set(height)
+    properties.legendsPositoin.set("right")
 
     chart = (selection) ->
       selection.each (data) ->
@@ -67,7 +73,7 @@ define ['../common/property'], (Property) ->
         $svg = $selection.selectAll('svg').data([data])
         $gEnter = $svg.enter().append('svg').append('g')
 
-        $svg.attr('width', width+margin.right).attr('height', height)
+        $svg.attr('width', width+margin.right+margin.left).attr('height', height+margin.top+margin.bottom)
         $g = $svg.select('g').attr('transform', "translate(" + width / 2 + "," + height / 2 + ")")
 
         $arc = $g.selectAll(".arc").data(pie(data))
@@ -80,18 +86,24 @@ define ['../common/property'], (Property) ->
         $arc.select('path').style("fill", (d) -> color(nameMap(d.data)));
 
 
-        total = $arc.data().map((d) -> valueMap(d)).reduce (a,b) -> a+b
+        total = data.map((d) -> valueMap(d)).reduce (a,b) -> a+b
         $arcEnter.append("text")
         $arc.select('text').attr("transform", (d) -> "translate(" + arc.centroid(d) + ")")
         .attr("dy", ".35em")
         .style("text-anchor", "middle")
-        .text((d) -> formatNumber(valueMap(d.data)) + " (" +
+        .text((d) -> formatNumber(valueMap(d)) + " (" +
           formatPercent(valueMap(d) /  total) + ")");
 
         if legend
           $gEnter.append('g').attr('class','legend')
           $legend = $g.select('.legend')
-          .attr("transform", "translate("+(width/2)+"," + (-height/2) + ")")
+          .attr("transform",
+              if "right" == properties.legendsPositoin.get()
+                "translate("+(width/2)+"," + (-height/2) + ")"
+              else
+                "translate("+(-width/2)+"," + ((height)*.5) + ")"
+            )
+          #.attr("transform", "translate("+(width/2)+"," + (height/2 - margin.bottom) + ")")
           .attr("class", "legend")
           .attr("width", radius * 2)
           .attr("height", radius * 2)

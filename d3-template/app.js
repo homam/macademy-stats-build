@@ -8,11 +8,9 @@
 
   http = require('http');
 
-  console.log('hello 2');
-
   app = express();
 
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', process.env.PORT || 3100);
 
   app.set('views', __dirname + '/views');
 

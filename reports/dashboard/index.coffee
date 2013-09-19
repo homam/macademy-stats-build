@@ -46,14 +46,47 @@ require ['../../chart-modules/bar/chart.js',
 (barChart, pieChart, tooltip) ->
 
   charts = []
+
+  # Trial Chapter Used by
+  charts.push new Chart(
+    "http://stats.macademy.com/Home/TrialChapterVisits",
+    "#UsersTrialChapterVisits",
+    (->  pieChart().margin({right:0, left: 0, bottom: 40})
+    .legendsPositoin("bottom")
+    .width(300).height(300)
+    .colors(d3.scale.category10())),
+  (raw) ->
+    d = raw[0]
+    return [
+      {name: 'Visited Trial Chapter', value: d['Visits']}
+      {name: '', value: d['Users'] - d['Visits']}
+    ]
+  )
+
+  # Buyers that Visited Trial Chapter before Purchase
+  charts.push new Chart(
+    "http://stats.macademy.com/Home/TrialChapterVisitsByBuyers",
+    "#BuyersTrialChapterVisits",
+    (->  pieChart().margin({right:0, left: 0, bottom: 40})
+    .legendsPositoin("bottom")
+    .width(300).height(300)
+    .colors(d3.scale.category10())),
+  (raw) ->
+    d = raw[0]
+    return [
+      {name: 'Visited Trial Chapter', value: d['Visits']}
+      {name: '', value: d['Users'] - d['Visits']}
+    ]
+  )
+
   # Funnel
   charts.push new Chart(
     "http://stats.macademy.com/Home/IapEventsPerUser",
     "#IapEventsPerUser",
     ((self)->
-      barChart().width(700).height(350).devs(->0)
-      .tooltip(tooltip().text((d) ->d3.format('.2p') d.value / self.total))
-      .margin({bottom: 40}).funnel(true)),
+      barChart().width(700).height(300).devs(->0)
+      .tooltip(tooltip().text((d) ->d3.format(',f') d.value))
+      .margin({bottom: 95}).funnel(true).xAxis({labelsDy: "1em"})),
     (raw) ->
       data = _(raw[0]).map((value, key) -> {name: key, value: value})
       @total = data[0].value
@@ -65,7 +98,7 @@ require ['../../chart-modules/bar/chart.js',
     "#IapRequestsBeforePurchaseHistogram",
     ((self)-> barChart().tooltip(tooltip().text((d) -> d3.format('.2p') d.value/self.total))
     .devs(->0)
-    .margin({bottom: 45, left: 50}).width(465).height(300).drawExpectedValue(true).coalescing(10)
+    .margin({bottom: 45, left: 50}).width(465).height(200).drawExpectedValue(true).coalescing(10)
     .xAxis({text:"Page Visits", dy: "-.35em"})
     .yAxis({text:"Users", dy: ".75em"})
     )
@@ -79,11 +112,13 @@ require ['../../chart-modules/bar/chart.js',
   )
 
 
-  # View at which Purchase happened
+  # Purchase made a...
   charts.push new Chart(
     "http://stats.macademy.com/Home/ViewOfPurchase",
     "#ViewOfPurchase",
-    (->  pieChart().margin({right:120}).width(465).height(300)
+    (->  pieChart().margin({right:100, left: 0, bottom: 0})
+    .legendsPositoin("right")
+    .width(350).height(350)
     .colors(d3.scale.category10())),
     (raw) ->
       _(raw).map((d) -> {name: d['View'], value: d['Count']})
@@ -95,7 +130,9 @@ require ['../../chart-modules/bar/chart.js',
   usersChart = new Chart(
     "http://stats.macademy.com/Home/AppUsersSources",
     "#AppUsersSources",
-    (-> pieChart().margin({right:120}).width(465).height(300)
+    (-> pieChart().margin({right:100, left: 0, bottom: 0})
+    .legendsPositoin("right")
+    .width(350).height(350)
     .colors((e) -> {'facebok':'#1f77b4', 'none':'gray', 'form':'green'}[e]))
     (raw) -> _(raw).map((d) -> {name: d['Source'] ? "none", value: d['Users']})
   )
@@ -108,7 +145,7 @@ require ['../../chart-modules/bar/chart.js',
   charts.push new Chart(
     "http://stats.macademy.com/Home/VisitsBeforePurchaseHistogram",
     "#VisitsBeforePurchaseHistogram",
-    ((self)->barChart().width(465).height(300).devs(->0)
+    ((self)->barChart().width(465).height(200).devs(->0)
     .tooltip(tooltip().text((d) -> d3.format('.2p') d.value/self.total))
     .margin({bottom: 45, left: 50}).drawExpectedValue(true).coalescing(10)
     .xAxis({text:"Page Visits", dy: "-.35em"})
@@ -126,7 +163,7 @@ require ['../../chart-modules/bar/chart.js',
   charts.push new Chart(
     "http://stats.macademy.com/Home/UsageAfterPurchase",
     "#UsageAfterPurchase",
-    ((self)-> barChart().width(700).height(350).devs(->0)
+    ((self)-> barChart().width(700).height(300).devs(->0)
     .tooltip(tooltip().text((d) -> d3.format('.2p') d.value/self.total))
     .margin({bottom: 45, left: 50}).drawExpectedValue(true).coalescing(20)
     .xAxis({text:"Page Visits", dy: "-.35em"})
@@ -139,6 +176,24 @@ require ['../../chart-modules/bar/chart.js',
       @total = data.map((d) -> d.value).reduce (a,b) -> a+b
       return data
   )
+
+  charts.push {
+    api: "http://stats.macademy.com/Home/QuickStats"
+    render: (stats) ->
+      ['Visits', 'Users', 'Purchases'].forEach (i) ->
+        $("#QuickStats [data-raw] [data-"+i+"]").text(d3.format(',f') stats[i])
+        $("#QuickStats [data-ratio] [data-"+i+"]").text(d3.format('.2p') stats[i]/stats.Visits )
+    update: (from, to) ->
+      self = this
+      api = this.api + "?from=#{from}&to=#{to}"
+      cache = GetCacheItem api
+      if cache.isValid()
+        self.render cache.data
+      else
+        d3.json api, (stats) ->
+          cache.setData stats[0]
+          self.render stats[0]
+  }
 
   #charts = [charts[1]]
 

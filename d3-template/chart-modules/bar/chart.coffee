@@ -19,7 +19,7 @@ define ['../common/property'], (Property) ->
     yAxis = d3.svg.axis().scale(y).orient('left').tickFormat(d3.format(','))
 
 
-    formatPercent = d3.format('.1p')
+    formatPercent = d3.format('.2p')
 
     nameMap = (d) ->d.name
     valueMap  = (d) ->d.value
@@ -65,15 +65,16 @@ define ['../common/property'], (Property) ->
       # number, used in histograms
       coalescing: new Property
 
-      # {text, dy}
+      # {text, dy, labelsDy}
       xAxis: new Property
 
-      # {text, dy}
+      # {text, dy, labelsDy}
       yAxis: new Property
 
     }
 
 
+    properties.xAxis.set({labelsDy: ".75em"})
     properties.width.set(width)
     properties.height.set(height)
 
@@ -144,6 +145,7 @@ define ['../common/property'], (Property) ->
 
         $rect = $main.select('rect')
         $rect.transition().duration(200).attr('width', x.rangeBand())
+        .attr('class', nameMap)
         .attr('x', (d) -> x(nameMap(d)))
         .attr('y', (d) -> y(valueMap(d)))
         .attr('height', (d)-> height-y(valueMap(d)))
@@ -156,8 +158,16 @@ define ['../common/property'], (Property) ->
           $mainEnter.append('text').attr('class','percentage')
           $main.select('text.percentage')
           .attr('x', (d) -> x(nameMap(d)) + x.rangeBand()/2)
-          .attr('y', height-(height*.15))
-          .text((d) -> formatPercent valueMap(d) / total)
+          #.attr('y', height-(height*.10))
+          .attr('y', height+margin.bottom-10)
+          .text((d,i) -> if i > 0 then (formatPercent valueMap(d) / total) else "of Total")
+          .style("text-anchor", "middle")
+          $mainEnter.append('text').attr('class','percentage-step')
+          $main.select('text.percentage-step')
+          .attr('x', (d) -> x(nameMap(d)) + x.rangeBand()/2)
+          #.attr('y', height-(height*.25))
+          .attr('y', height+margin.bottom-40)
+          .text((d,i) -> if i >0 then (formatPercent valueMap(d) / valueMap(data[i-1])) else "of Last Step")
           .style("text-anchor", "middle")
 
 
@@ -250,14 +260,16 @@ define ['../common/property'], (Property) ->
 
 
 
+        xAxisProps = properties.xAxis.get()
+
         $xAxis.transition().duration(200).call(xAxis)
         .selectAll("text")
         .text((d) -> if !!coalescing and d >= coalescing then (d + "+") else d)
+        .attr("dy", xAxisProps.labelsDy || ".75em")
         #.style("text-anchor", "end").style("font-size", "10px").attr("dx", "2em").attr("transform", "rotate(0)")
         $yAxis.transition().duration(200).call(yAxis)
 
         #xAxis label
-        xAxisProps = properties.xAxis.get()
         if !!xAxisProps
           $gEnter.append("text").attr("class", "x label")
           $g.select('text.x.label').attr("text-anchor", "end")

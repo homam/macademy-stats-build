@@ -35,6 +35,10 @@ h2 {
   padding-bottom: 5px;
   border-bottom: 1px solid #777;
 }
+.chart svg {
+  margin: auto;
+  display: block;
+}
 input {
   outline: none;
 }
@@ -56,8 +60,10 @@ line.rightStnDev {
   stroke: silver;
 }
 #IapEventsPerUser rect {
-  /* source: http://alturl.com/et3nf */
-
+  fill: rgba(255, 127, 14, 0.71) !important;
+}
+#IapEventsPerUser rect.Failures {
+  fill: rgba(255, 14, 14, 0.71) !important;
 }
 /* Styles */
 .header {
@@ -104,8 +110,7 @@ line.rightStnDev {
   height: 25px;
 }
 .header #date-controls input.windowsPhoneStyleBtns.hover {
-  border-color: #071836;
-  background: #ddd;
+  background: #fff;
   color: #124191;
 }
 .header #date-controls .dateToday {
@@ -150,9 +155,52 @@ line.rightStnDev {
 .wrapper section {
   padding-bottom: 10px;
 }
-.wrapper section#IapEventsPerUser {
+.wrapper > div:first-child {
   position: relative;
-  padding-top: 50px;
+  padding-top: 70px;
+}
+.wrapper .data-table {
+  text-align: center;
+  width: 550px;
+  margin: auto;
+  font-size: 150%;
+}
+.wrapper .data-table th {
+  font-weight: 100;
+  padding: 5px 10px;
+}
+.wrapper .data-table td {
+  font-weight: normal;
+  font-size: 75%;
+  padding: 10px 0;
+  color: #333;
+  background: #c1d8fe;
+  cursor: default;
+}
+.wrapper .data-table td:hover {
+  color: #fff;
+  background: #124191;
+}
+.wrapper .data-table tr:first-child td:first-child {
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  border-top-left-radius: 5px;
+}
+.wrapper .data-table tr:first-child td:last-child {
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-right-radius: 5px;
+}
+.wrapper .data-table tr:last-child td:first-child {
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-left-radius: 5px;
+  background: #f3f8ff;
+}
+.wrapper .data-table tr:last-child td:last-child {
+  -webkit-border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  border-bottom-right-radius: 5px;
 }
 .wrapper .fiftyFifty:after {
   content: '';

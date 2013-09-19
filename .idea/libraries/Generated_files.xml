@@ -2,17 +2,15 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/d3-template/chart-modules/common/property.js" />
-        <item url="file://$PROJECT_DIR$/d3-template/chart-modules/pie/chart.js" />
-        <item url="file://$PROJECT_DIR$/reports/dashboard/index.js" />
         <item url="file://$PROJECT_DIR$/d3-template/chart-modules/bar/chart.js" />
+        <item url="file://$PROJECT_DIR$/reports/dashboard/index.js" />
+        <item url="file://$PROJECT_DIR$/d3-template/chart-modules/pie/chart.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/d3-template/chart-modules/common/property.js" />
-      <root url="file://$PROJECT_DIR$/d3-template/chart-modules/pie/chart.js" />
-      <root url="file://$PROJECT_DIR$/reports/dashboard/index.js" />
       <root url="file://$PROJECT_DIR$/d3-template/chart-modules/bar/chart.js" />
+      <root url="file://$PROJECT_DIR$/reports/dashboard/index.js" />
+      <root url="file://$PROJECT_DIR$/d3-template/chart-modules/pie/chart.js" />
     </CLASSES>
     <SOURCES />
   </library>
